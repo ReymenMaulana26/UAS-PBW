@@ -10,6 +10,7 @@ $rows = mysqli_query($conn,"SELECT * FROM recipe ORDER BY recipe_id DESC LIMIT 4
 
 <!DOCTYPE html>
 <html lang="en">
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -55,7 +56,7 @@ $rows = mysqli_query($conn,"SELECT * FROM recipe ORDER BY recipe_id DESC LIMIT 4
                       Sing In
                     </button>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="admin/login.php">Admin</a></li>
+                      <li><a class="dropdown-item" href="admin page/login.php">Admin</a></li>
                       <li><a class="dropdown-item" href="signin.php">User</a></li>
                     </ul>
                   </div>';
