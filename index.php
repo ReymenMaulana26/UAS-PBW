@@ -39,7 +39,7 @@ $rows = mysqli_query($conn,"SELECT * FROM recipe ORDER BY recipe_id DESC LIMIT 4
                         <a class="nav-link active" href="index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="category.php">Category</a>
+                        <a class="nav-link" href="user page/category.php">Category</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" onclick="handleProfileClick()">Profile</a>
@@ -57,10 +57,10 @@ $rows = mysqli_query($conn,"SELECT * FROM recipe ORDER BY recipe_id DESC LIMIT 4
                     </button>
                     <ul class="dropdown-menu">
                       <li><a class="dropdown-item" href="admin page/login.php">Admin</a></li>
-                      <li><a class="dropdown-item" href="signin.php">User</a></li>
+                      <li><a class="dropdown-item" href="user page/login.php">User</a></li>
                     </ul>
                   </div>';
-                    echo '<button class="btn2 mx-2" onclick="location.href=\'signup.php\'" type="submit">Sign Up</button>';
+                    echo '<button class="btn2 mx-2" onclick="location.href=\'user page/register.php\'" type="submit">Sign Up</button>';
                 }
                 ?>
             </div>
