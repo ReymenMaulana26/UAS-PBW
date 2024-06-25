@@ -95,7 +95,7 @@ $rows = mysqli_query($conn,"SELECT * FROM recipe ORDER BY recipe_id DESC LIMIT 4
                 if (mysqli_num_rows($rows) > 0) {
                     while ($fetch_recipe = mysqli_fetch_assoc($rows)) {
                 ?>        
-                        <div class="col-6 col-md-6 col-lg-2" onclick="location.href='recipe.php?recipe_id=<?php echo $fetch_recipe['recipe_id']; ?>'">
+                        <div class="col-6 col-md-6 col-lg-2" onclick="location.href='user page/recipe.php?recipe_id=<?php echo $fetch_recipe['recipe_id']; ?>'">
                             <div class="card text-center">
                                 <!-- <form action="rcipe.php"> -->
                                 <img class="card-img-top" src="img/<?php echo $fetch_recipe['recipe_img']; ?>" alt="" style="border-top-left-radius: 4px; border-top-right-radius: 4px;">    
@@ -137,11 +137,11 @@ $rows = mysqli_query($conn,"SELECT * FROM recipe ORDER BY recipe_id DESC LIMIT 4
         function handleProfileClick() {
             <?php if (isset($_SESSION['username'])) { ?>
                 // User is logged in, proceed to upload form
-                window.location.href = 'profile.php';
+                window.location.href = 'user page/profile.php';
             <?php } else { ?>
                 // User is not logged in, redirect to sign in page
                 alert('You must be logged to your account!');
-                window.location.href = 'signin.php';
+                window.location.href = 'user page/login.php';
 
             <?php } ?>
         }
@@ -149,11 +149,11 @@ $rows = mysqli_query($conn,"SELECT * FROM recipe ORDER BY recipe_id DESC LIMIT 4
         function handleUploadClick() {
             <?php if (isset($_SESSION['username'])) { ?>
                 // User is logged in, proceed to upload form
-                window.location.href = 'uploadform.php';
+                window.location.href = 'user page/uploadform.php';
             <?php } else { ?>
                 // User is not logged in, redirect to sign in page
                 alert('You must be logged in to upload a recipe!');
-                window.location.href = 'signin.php';
+                window.location.href = 'user page/login.php';
 
             <?php } ?>
         }

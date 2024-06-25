@@ -31,7 +31,7 @@ $recipe = mysqli_fetch_assoc($rows);
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-warning">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="../index.html">
                 <img src="../asset/cookingmainlogo.png" height="50px">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,7 +40,7 @@ $recipe = mysqli_fetch_assoc($rows);
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto my-2 my-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php">Home</a>
+                        <a class="nav-link" href="../index.php">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="category.php">Category</a>
@@ -150,7 +150,7 @@ $recipe = mysqli_fetch_assoc($rows);
                     ?>
                             <div class="col-6 col-md-6 col-lg-3" onclick="location.href='recipe.php?recipe_id=<?php echo $fetch_recipe['recipe_id']; ?>'">
                                 <div class="card">
-                                    <img class="card-img-top" src="img/<?php echo $fetch_recipe['recipe_img']; ?>" alt="Card image top" style="border-top-left-radius: 4px; border-top-right-radius: 4px;">
+                                    <img class="card-img-top" src="../img/<?php echo $fetch_recipe['recipe_img']; ?>" alt="Card image top" style="border-top-left-radius: 4px; border-top-right-radius: 4px;">
                                     <div class="card-body">
                                         <h6><?php echo $fetch_recipe['recipe_name']; ?></h6>
                                     </div>
@@ -177,7 +177,7 @@ $recipe = mysqli_fetch_assoc($rows);
             <?php } else { ?>
                 // User is not logged in, redirect to sign in page
                 alert('You must be logged to your account!');
-                window.location.href = 'signin.php';
+                window.location.href = 'login.php';
 
             <?php } ?>
         }

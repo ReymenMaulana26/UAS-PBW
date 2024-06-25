@@ -2,19 +2,30 @@
 
 include '../config.php';
 
-    session_start();
+session_start();
     if($_SESSION['login']==false) {
         header('location: login.php');
     }
 
-// Fetch recipes data from database
+// Fetch user data from database
 $queryuser = mysqli_query($conn, "SELECT * FROM user");
 $jumlahuser = mysqli_num_rows($queryuser);
 
 
-// Fetch recipes data from database
-$queryrecipe = mysqli_query($conn, "SELECT * FROM recipe");
-$jumlahrecipe = mysqli_num_rows($queryrecipe);
+if(isset($_POST['delete-btn'])){
+    $username = ($_POST['username']);
+    $querydelete = mysqli_query($conn, "DELETE FROM `user` WHERE username = '$username'");
+
+    // run query DELETE
+    if ($querydelete) {
+        echo "<script> alert('User Berhasil di Hapus'); </script>";
+            ?>
+                <meta http-equiv="refresh" content="0; url=user.php" />
+            <?php
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+}
 
 ?>
 <!doctype html>
@@ -29,14 +40,14 @@ $jumlahrecipe = mysqli_num_rows($queryrecipe);
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/admin_page.css">
+    <link rel="stylesheet" href="../css/user.css">
 </head>
 
 <body>
-    <!--Start Navbar -->
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-warning p-3">
         <div class="container">
-            <a class="navbar-brand" href="admin_page.php">
+            <a class="navbar-brand">
                 <img src="../asset/cookingmainlogo.png" height="50px">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,7 +68,7 @@ $jumlahrecipe = mysqli_num_rows($queryrecipe);
                 <?php
                 if (isset($_SESSION['username_admin'])) {
                     // User is signed in, show logout button
-                    echo '<button class="btn2 mx-2" onclick="location.href=\'../logout.php\'" type="submit">Log Out</button>';
+                    echo '<button class="btn1 mx-2" onclick="location.href=\'../logout.php\'" type="submit">Log Out</button>';
                 } else {
                     // User is not signed in, show sign in and sign up buttons
                     echo '<button class="btn1 mx-2" onclick="location.href=\'signin.php\'" type="submit">Sign In</button>';
@@ -68,7 +79,7 @@ $jumlahrecipe = mysqli_num_rows($queryrecipe);
         </div>
     </nav>
     <!-- End Navbar -->
-    
+
     <!-- Start Nested nav -->
     <div class="row">
   <div class="col-lg-2">
@@ -78,7 +89,7 @@ $jumlahrecipe = mysqli_num_rows($queryrecipe);
             <a class="nav-link" href="" ></a>
             <a class="nav-link" href=""></a>
             <a class="nav-link" href=""></a>
-            <a class="nav-link" href="" style="color: #E8B832;"><i class="fa-solid fa-gauge fa-1x"></i> Dashboard</a>
+            <a class="nav-link" href="admin_page.php" style="color: #E8B832;"><i class="fa-solid fa-gauge fa-1x"></i> Dashboard</a>
             <a class="nav-link" href="user.php" style="color: #E8B832;"><i class="fa-solid fa-user fa-1x"></i> User</a>
             <a class="nav-link" href="recipe.php" style="color: #E8B832;"><i class="fas fa-align-justify fa-1x"></i> Recipe</a>   
         </nav>
@@ -86,43 +97,57 @@ $jumlahrecipe = mysqli_num_rows($queryrecipe);
   </div>
     <!-- End Nested nav -->
 
-    <!-- Start content -->
-    <div class="col-8">
-    <div class="container mt-5">
-        <h1>Dasboard</h1>
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="summary-user p-3 mt-3">
-                <div class="row">
-                    <div class="col-5">
-                        <i class="fa fa-users fa-5x"></i>
-                    </div>
-                    <div class="col-6">
-                        <h3 class="fs-2" style="margin-bottom: 0">User</h3>
-                        <p class="fs-8" style="margin: 0; padding-top: 0;"><?php echo $jumlahuser; ?> User</p>
-                        <p><a href="user.php" class="text-white fs-8" style="text-decoration: none">Lihat Detail</a></p>
-                    </div>
-                </div>
-            </div>
-            </div>
+    <!-- Start Tabel -->
+    <div class="col-9 p-5">
+    <div class="table-responsive mt-3">
+            <table border="1" class="table">
+                <h2>List User</h2>
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Profile picture</th>
+                        <th>Nama</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                            if($jumlahuser == 0){
+                    ?>
+                            <tr>
+                                <td colspan=3 class="text-center">Tidak ada data</td>
+                            </tr>
+                    <?php
 
-            <div class="col-lg-4">
-                <div class="summary-category p-3 mt-3">
-                <div class="row">
-                    <div class="col-4">
-                        <i class="fas fa-align-justify fa-6x"></i>
-                    </div>
-                    <div class="col-6">
-                        <h3 class="fs-2" style="margin-bottom: 0">Recipe</h3>
-                        <p class="fs-8" style="margin: 0; padding-top: 0;"><?php echo $jumlahrecipe; ?> Recipe</p>
-                        <p><a href="recipe.php" class="text-white fs-8" style="text-decoration: none">Lihat Detail</a></p>
-                    </div>
-                </div>
+                            }
+                            else{
+                                $number = 1;
+                                while($data=mysqli_fetch_array($queryuser)){
+                            ?>
+                                    <tr>
+                                        <td><?php echo $number; ?></td>
+                                        <td><img src="../img/<?php echo $data["profpic"] ?>" alt="" width="120px" height="120px"></td>
+                                        <td><?php echo $data['username']; ?></td>
+                                        <td><?php echo $data['email']; ?></td>   
+                                    </tr>
+                            <?php
+                                $number++;
+                                }
+                            }
+                        
+                    ?>
+                </tbody>
+            </table>
+            <form action="" method="post" enctype="multipart/form-data" autocomplete="off">    
+            <div class="judul text-center mt-5"><h2>Delete Akun</h2></div>
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" id="username" class="form-control" name="username" placeholder="Username">
             </div>
-            </div>
+            <button type="sumbit" name="delete-btn" class="btn3">Delete</button>
+        </div>    
         </div>
-    </div>
-    <!-- End konten -->
+    <!-- End Tabel -->
 
 </body>
 
