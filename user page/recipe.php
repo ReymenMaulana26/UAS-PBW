@@ -48,7 +48,7 @@ $result = mysqli_fetch_assoc($rows);
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto my-2 my-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" href="../index.php">Home</a>
+                        <a class="nav-link" href="../index.php">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="category.php">Category</a>
@@ -60,11 +60,11 @@ $result = mysqli_fetch_assoc($rows);
                 <?php
                 if (isset($_SESSION['username'])) {
                     // User is signed in, show logout button
-                    echo '<button class="btn2 mx-2" onclick="location.href=\'logout.php\'" type="submit">Log Out</button>';
+                    echo '<button class="btn2 mx-2" onclick="location.href=\'../logout.php\'" type="submit">Log Out</button>';
                 } else {
                     // User is not signed in, show sign in and sign up buttons
-                    echo '<button class="btn1 mx-2" onclick="location.href=\'signin.php\'" type="submit">Sign In</button>';
-                    echo '<button class="btn2 mx-2" onclick="location.href=\'signup.php\'" type="submit">Sign Up</button>';
+                    echo '<button class="btn1 mx-2" onclick="location.href=\'login.php\'" type="submit">Sign In</button>';
+                    echo '<button class="btn2 mx-2" onclick="location.href=\'register.php\'" type="submit">Sign Up</button>';
                 }
                 ?>
             </div>

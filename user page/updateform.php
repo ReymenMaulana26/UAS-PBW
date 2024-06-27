@@ -54,7 +54,7 @@ if (isset($_POST['submit'])) {
         // Jika format sesuai
         $newImgName = uniqid();
         $newImgName .= '.' . $imageExtension;
-        move_uploaded_file($tmpName, 'img/' . $newImgName);
+        move_uploaded_file($tmpName, '../img/' . $newImgName);
 
         // Insert the recipe into the "recipe" table
         $sql4 = "UPDATE recipe SET user_id = '$user_id', recipe_name = '$recipe_name', recipe_img = '$newImgName', description = '$description', instructions = '$instruction', cat_id = $cat_id WHERE recipe_id = $recipe_id";

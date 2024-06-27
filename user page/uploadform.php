@@ -34,8 +34,8 @@ if (isset($_POST['submit'])) {
     $tmpName = $_FILES['recipe_image']['tmp_name'];
     $imageExtension = explode('.', $fileName);
     $imageExtension = strtolower(end($imageExtension));
-    $imageExtension2 = $imageExtension[1];
-    $newname = 'recipe' . time() . '.' . $imageExtension2;
+    //$imageExtension2 = $imageExtension[1];
+    //$newname = 'recipe' . time() . '.' . $imageExtension2;
 
     // Tipe file yang diizinkan
     $validExtension = ['png', 'jpg', 'jpeg'];

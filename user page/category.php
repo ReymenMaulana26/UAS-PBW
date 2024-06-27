@@ -31,7 +31,7 @@ $recipe = mysqli_fetch_assoc($rows);
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-warning">
         <div class="container">
-            <a class="navbar-brand" href="../index.html">
+            <a class="navbar-brand" href="../index.php">
                 <img src="../asset/cookingmainlogo.png" height="50px">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,7 +52,7 @@ $recipe = mysqli_fetch_assoc($rows);
                 <?php
                 if (isset($_SESSION['username'])) {
                     // User is signed in, show logout button
-                    echo '<button class="btn2 mx-2" onclick="location.href=\'logout.php\'" type="submit">Log Out</button>';
+                    echo '<button class="btn2 mx-2" onclick="location.href=\'../logout.php\'" type="submit">Log Out</button>';
                 } else {
                     // User is not signed in, show sign in and sign up buttons
                     echo '<div class="dropdown">
@@ -60,11 +60,11 @@ $recipe = mysqli_fetch_assoc($rows);
                       Sing In
                     </button>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="admin/login.php">Admin</a></li>
-                      <li><a class="dropdown-item" href="signin.php">User</a></li>
+                      <li><a class="dropdown-item" href="../admin page/login.php">Admin</a></li>
+                      <li><a class="dropdown-item" href="login.php">User</a></li>
                     </ul>
                   </div>';
-                    echo '<button class="btn2 mx-2" onclick="location.href=\'signup.php\'" type="submit">Sign Up</button>';
+                    echo '<button class="btn2 mx-2" onclick="location.href=\'login.php\'" type="submit">Sign Up</button>';
                 }
                 ?>
             </div>

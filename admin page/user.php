@@ -58,12 +58,6 @@ if(isset($_POST['delete-btn'])){
                     <li class="nav-item">
                         <a class="nav-link" href="admin_page.php">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="category.php">Category</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="profile.php">Profile</a>
-                    </li>
                 </ul>
                 <?php
                 if (isset($_SESSION['username_admin'])) {
@@ -80,22 +74,25 @@ if(isset($_POST['delete-btn'])){
     </nav>
     <!-- End Navbar -->
 
-    <!-- Start Nested nav -->
-    <div class="row">
-  <div class="col-lg-2">
-    <div class="container-nav">
-        <nav id="navbar-example3">
-        <nav class="nav nav-pills flex-column">
-            <a class="nav-link" href="" ></a>
-            <a class="nav-link" href=""></a>
-            <a class="nav-link" href=""></a>
-            <a class="nav-link" href="admin_page.php" style="color: #E8B832;"><i class="fa-solid fa-gauge fa-1x"></i> Dashboard</a>
-            <a class="nav-link" href="user.php" style="color: #E8B832;"><i class="fa-solid fa-user fa-1x"></i> User</a>
-            <a class="nav-link" href="recipe.php" style="color: #E8B832;"><i class="fas fa-align-justify fa-1x"></i> Recipe</a>   
-        </nav>
-    </div>
-  </div>
-    <!-- End Nested nav -->
+    <!-- Start Sidebar -->
+<div class="wrapper">
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <h3>Admin Panel</h3>
+        </div>
+
+        <ul class="nav-item">
+            <li class="nav-item">
+                <a href="admin_page.php" style="color: #E8B832;"><i class="fa-solid fa-gauge fa-1x"></i> Dashboard</a>
+            </li>
+            <li class="nav-item active">
+                <a href="user.php" style="color: #E8B832;"><i class="fa-solid fa-user fa-1x"></i> User</a>
+            </li>
+            <li class="nav-item">
+                <a href="recipe_page.php" style="color: #E8B832;"><i class="fas fa-align-justify fa-1x"></i> Recipe</a>
+            </li>
+        </ul>
+    </nav>
 
     <!-- Start Tabel -->
     <div class="col-9 p-5">
@@ -148,6 +145,9 @@ if(isset($_POST['delete-btn'])){
         </div>    
         </div>
     <!-- End Tabel -->
+    </div>
+</div>
+<!-- End Sidebar -->
 
 </body>
 

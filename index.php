@@ -74,9 +74,9 @@ $rows = mysqli_query($conn,"SELECT * FROM recipe ORDER BY recipe_id DESC LIMIT 4
             <div class="row">
                 <div class="col-lg-7 text-center">
                     <h1>Discover<br>Delicious Recipes</h1>
-                    <form class="search" role="search" action="category.php" method="get">
+                    <form class="search" role="search" action="user page/category.php" method="get">
                         <input class="form-control" type="text" name="search" placeholder="Search Recipe" aria-label="Search"></input>
-                        <button type="submit" name="submit-btn" onclick="location.href='category.php'"><i class="fa fa-search"></i></button>
+                        <button type="submit" name="submit-btn" onclick="location.href='user page/category.php'"><i class="fa fa-search"></i></button>
                     </form>
                 </div>
             </div>
